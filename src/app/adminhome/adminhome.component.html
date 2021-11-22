@@ -1,0 +1,174 @@
+
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h2 style="font-family: monotype corsiva; color: rgb(4, 4, 46);">Lanware Project</h2>
+        </div>
+
+        <ul class="list-unstyled components">
+          
+            
+            <li>
+                <button type="button" (click)="viewuser()" class="btn btn-primary buttn btn-lg bg-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Manage Users
+                  </button>
+            </li>
+            
+            <li>
+                <button type="button" class="btn btn-primary buttn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                    Add Products
+                  </button>
+            </li>
+            <li>
+                <button type="button" (click)="viewproduct()" class="btn btn-primary buttn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#example">
+                    Manage Products
+                  </button>
+            </li>
+            <li>
+                <a href="#">Logout</a>
+            </li>
+        </ul>
+
+      
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        
+
+        <!-- modal window for user list -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3  style="font-family: monotype corsiva; text-align: center;" class="modal-title" id="exampleModalLabel">Users List</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row ">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                              </form> 
+                              <div class="divider d-flex align-items-center my-4">
+                            </div>
+                        </div>
+
+                        <table class="table table-light mt-3"><thead class="thead-light">
+                            <tr><th>Sl.No</th><th>user Name</th><th>Email</th><Th>Phone</Th></tr>
+                          </thead><tbody><h1></h1>
+                        <tr *ngFor="let user of this.users,  index as i">
+
+                          <td>{{i+1}} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td >{{user.uname}} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                         <td>   {{user.email}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                          <td>{{user.phone}}&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                           <td><button >Delete </button>
+                            &nbsp;&nbsp;
+                          
+                           </td></tr></tbody></table>
+                        <div class="col-4"></div>
+                    </div>
+  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <!-- modal window for product list -->
+          <div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3  style="font-family: monotype corsiva; text-align: center;" class="modal-title" id="exampleModalLabel">Products List</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row ">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                              </form> 
+                              <div class="divider d-flex align-items-center my-4">
+                            </div>
+                        </div>
+
+                        <table class="table table-light mt-3"><thead class="thead-light">
+                            <tr><th>Sl.No</th><th>product Name</th><th>Price</th><Th>Description</Th></tr>
+                          </thead><tbody><h1></h1>
+                        <tr *ngFor="let item of this.products,  index as i">
+
+                          <td>{{i+1}} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td >{{item.name}} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                         <td>   {{item.price}}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                          <td>{{item.desc}}&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                           <td><button >Remove </button>
+                            &nbsp;&nbsp;
+                          
+                           </td>
+                        <td><button>Update</button></td>
+                        
+                    </tr></tbody></table>
+                        <div class="col-4"></div>
+                    </div>
+  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+<!-- modal winndow for add product -->
+
+          <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalToggleLabel"> Add Products</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+  
+                    <input type="text" placeholder=" Product Name" class="form-control" [(ngModel)]="name" name="name" >
+                    <br> <input type="text" placeholder="Price " class="form-control" [(ngModel)]="price" name="price" >
+                   <br>  
+                   <input type="text" placeholder="Description" class="form-control" [(ngModel)]="desc" name="desc" >
+                   <label for="image"> Upload image</label>
+                   <input type="file"/>
+  
+                </div>
+                <div class="modal-footer">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="addproduct()">Save </button>
+                        
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+       
+        
+    </div>
+</div>
